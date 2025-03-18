@@ -1,0 +1,37 @@
+{% extends 'dictionary/base.html' %}
+
+{% block content %}
+<!-- this will display the searched word -->
+<h4>{{ word }}</h4>
+
+<!-- this will display the word meaning -->
+{% if meanings %}
+    <p><b>Meanings:</b></p>
+    <ul>
+        {% for pos, definition in meanings.items %}
+            <li><b>{{ pos }}:</b> {{ definition }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No meanings found.</p>
+{% endif %}
+
+<hr>
+
+<!-- this will display the antonyms for the word if they are available -->
+{% if antonyms %}
+    <p><b>Antonyms:</b> {{ antonyms|join:", " }}</p>
+{% else %}
+    <p>No antonyms found.</p>
+{% endif %}
+
+<hr>
+
+<!-- this will display the synonyms for the word if they are available -->
+{% if synonyms %}
+    <p><b>Synonyms:</b> {{ synonyms|join:", " }}</p>
+{% else %}
+    <p>No synonyms found.</p>
+{% endif %}
+
+{% endblock %}
